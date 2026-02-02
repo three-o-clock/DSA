@@ -1,25 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-struct TreeNode {
+struct TreeTreeNode {
     int data;
-    TreeNode* left;
-    TreeNode* right;
-    TreeNode(int val) : data(val), left(nullptr), right(nullptr) {}
+    TreeTreeNode* left;
+    TreeTreeNode* right;
+    TreeTreeNode(int val) : data(val), left(nullptr), right(nullptr) {}
 };
 
 
 // important
 class Solution {
 public:
-    vector<vector<int>> verticalTraversal(TreeNode* root) {
+    vector<vector<int>> verticalTraversal(TreeTreeNode* root) {
         vector<vector<int>> ans;
 
         if(root == nullptr) return ans;
 
-        // multiset because nodes in the same vertical can have the same value. hence did not use set
-        map<int, map<int, multiset<int>>> nodes;
-        queue<pair<TreeNode*, pair<int, int>>> q; // {node, {x, y}}
+        // multiset because TreeNodes in the same vertical can have the same value. hence did not use set
+        map<int, map<int, multiset<int>>> TreeNodes;
+        queue<pair<TreeTreeNode*, pair<int, int>>> q; // {TreeNode, {x, y}}
 
         // visualize cartesian plane and root as origin
         q.push({root, {0, 0}});
@@ -31,24 +31,24 @@ public:
             // cartersian plane
             int x = p.second.first;
             int y = p.second.second;
-            TreeNode * currentNode = p.first;
+            TreeTreeNode * currentTreeNode = p.first;
 
-            nodes[x][y].insert(currentNode->data);
+            TreeNodes[x][y].insert(currentTreeNode->data);
 
-            if(currentNode->left) {
-                q.push({currentNode->left, {x - 1, y + 1}});
+            if(currentTreeNode->left) {
+                q.push({currentTreeNode->left, {x - 1, y + 1}});
             }
 
-            if(currentNode->right) {
-                q.push({currentNode->right, {x + 1, y + 1}});
+            if(currentTreeNode->right) {
+                q.push({currentTreeNode->right, {x + 1, y + 1}});
             }
         }
 
-        for(auto i : nodes) {
+        for(auto i : TreeNodes) {
             vector<int> VerticalColumn;
 
             for(auto j : i.second) {
-                // insert all nodes on the same vertical [x] at the end of the vector verticalColumn 
+                // insert all TreeNodes on the same vertical [x] at the end of the vector verticalColumn 
                 VerticalColumn.insert(VerticalColumn.end(), j.second.begin(), j.second.end()); 
             }
 
@@ -64,13 +64,13 @@ public:
 // // Main method to test the verticalTraversal function
 // int main() {
 //     // Creating a binary tree
-//     TreeNode* root = new TreeNode(1);
-//     root->left = new TreeNode(2);
-//     root->right = new TreeNode(3);
-//     root->left->left = new TreeNode(4);
-//     root->left->right = new TreeNode(5);
-//     root->right->left = new TreeNode(6);
-//     root->right->right = new TreeNode(7);
+//     TreeTreeNode* root = new TreeTreeNode(1);
+//     root->left = new TreeTreeNode(2);
+//     root->right = new TreeTreeNode(3);
+//     root->left->left = new TreeTreeNode(4);
+//     root->left->right = new TreeTreeNode(5);
+//     root->right->left = new TreeTreeNode(6);
+//     root->right->right = new TreeTreeNode(7);
 
 //     // Creating an instance of Solution
 //     Solution sol;
