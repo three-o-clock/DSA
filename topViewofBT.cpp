@@ -2,7 +2,8 @@
 using namespace std;
 
 // Definition for a binary tree node
-struct TreeNode {
+struct TreeNode
+{
     int data;
     TreeNode *left;
     TreeNode *right;
@@ -10,9 +11,8 @@ struct TreeNode {
     TreeNode(int val) : data(val), left(nullptr), right(nullptr) {}
 };
 
-class Solution {
-public:
-    // Function to return the top view of the binary tree
+class Solution{
+    public:
     vector<int> topView(TreeNode *root){
         //your code goes here 
         vector<int> ans;
@@ -51,9 +51,11 @@ public:
 
         return ans;
     }
+    
 };
 
-int main() {
+int main()
+{
     // Creating a sample binary tree
     TreeNode *root = new TreeNode(1);
     root->left = new TreeNode(2);
@@ -72,7 +74,8 @@ int main() {
 
     // Print the result
     cout << "Top View Traversal: " << endl;
-    for (auto node : topView) {
+    for (auto node : topView)
+    {
         cout << node << " ";
     }
 
