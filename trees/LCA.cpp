@@ -9,16 +9,6 @@ struct TreeNode
     TreeNode(int val) : data(val), left(NULL), right(NULL) {}
 };
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int data;
- *     TreeNode *left;
- *     TreeNode *right;
- *      TreeNode(int val) : data(val) , left(nullptr) , right(nullptr) {}
- * };
- **/
-
 class Solution
 {
 public:
