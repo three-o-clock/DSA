@@ -27,7 +27,7 @@ public:
         q.push({root, 0});
 
         while (!q.empty())
-        {
+        {   
             int n = q.size();
             int leftMostIdx = q.front().second;
 
@@ -57,3 +57,22 @@ public:
         return ans;
     }
 };
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    string data;
+    int count = 0, choice;
+
+    cout << "Enter binary data: ";
+    cin >> data;
+
+    // Count number of 1s
+    for (int i = 0; i < data.length(); i++) {
+        if (data[i] == '1') {
+            count++;
+        }
+    }
+
+    
