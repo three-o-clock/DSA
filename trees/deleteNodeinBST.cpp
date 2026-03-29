@@ -11,6 +11,7 @@ struct TreeNode
 };
 
 class Solution {
+    // this method has a greater space complexity because of the recursion stack 
    public:
     TreeNode *deleteNode(TreeNode *root, int key) {
         // your code goes here
