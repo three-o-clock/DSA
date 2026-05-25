@@ -10,5 +10,24 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> index;
+        int size = nums.size();
+
+        for(int i = 0; i < size; i++) {
+            index[nums[i]] = i;
+        }
+
+        int complement;
+
+        for(int i = 0; i < size; i++) {
+            complement = target - nums[i];
+
+            if(index.count(complement) && index[complement] != i) {
+                return {i, index[complement]};
+            } 
+        }
+
+        return {};
+
     }
 };
