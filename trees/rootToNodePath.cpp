@@ -47,12 +47,12 @@ private:
             ans.push_back(v);
         }
 
-        if(root->left != NULL)
+        if (root->left != NULL)
         {
             rootToLeafPaths(root->left, v, ans);
         }
 
-        if(root->right != NULL)
+        if (root->right != NULL)
         {
             rootToLeafPaths(root->right, v, ans);
         }
@@ -61,8 +61,9 @@ private:
     }
 };
 
-int main() {
-    TreeNode* root = new TreeNode(1);
+int main()
+{
+    TreeNode *root = new TreeNode(1);
     root->left = new TreeNode(2);
     root->right = new TreeNode(3);
     root->left->left = new TreeNode(4);
@@ -71,8 +72,10 @@ int main() {
     Solution solution;
     vector<vector<int>> paths = solution.allRootToLeaf(root);
 
-    for (const auto& path : paths) {
-        for (int val : path) {
+    for (const auto &path : paths)
+    {
+        for (int val : path)
+        {
             cout << val << " ";
         }
         cout << endl;

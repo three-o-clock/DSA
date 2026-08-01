@@ -2,8 +2,7 @@
 
 using namespace std;
 
-class graph
-{
+class graph {
     vector<vector<int>> adj;
 
 public:
@@ -39,4 +38,36 @@ int main()
     }
 
     return 0;
+}
+
+int V;
+vector<int> parent(V);
+for(int i = 0; i <V; i++) parent[i] = i;
+vector<int> rank(V, 0);
+
+
+int find(int x) {
+    if(parent[x] == x) return x;
+
+    return parent[x] = find(parent[x]);
+} 
+
+void UnionSet(int x, int y) {
+    int parent_x = find(x);
+    int parent_y = find(y);
+
+    if(parent_x == parent_y) return;
+
+    if(rank[parent_x] < rank[parent_y]) {
+        parent[parent_x] = parent_y;
+    }
+
+    else if(rank[parent_x] > rank[parent_y]) {
+        parent[parent_y] = parent_x;
+    }
+
+    else {
+        parent[parent_x] = parent_y;
+        rank[parent_y]++;
+    }
 }
