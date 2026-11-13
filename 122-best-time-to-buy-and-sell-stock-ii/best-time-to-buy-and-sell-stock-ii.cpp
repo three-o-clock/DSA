@@ -2,24 +2,26 @@ class Solution {
 public:
     int maxProfit(vector<int>& arr) {
         int n = arr.size();
-        vector<vector<int>> dp(n + 1, vector<int>(2, 0));
-        // int profit = helper(0, n, 1, arr, dp);
+
+        vector<int> ahead(2, 0), curr(2, 0);
 
         for(int idx = n - 1; idx >= 0; idx--) {
             for(int buy = 0; buy <= 1; buy++) {
                 int profit = 0;
 
                 if(buy) {
-                    profit = max(-arr[idx] + dp[idx + 1][0], dp[idx + 1][1]);
+                    profit = max(-arr[idx] + ahead[0], ahead[1]);
                 }
                 else {
-                    profit = max(arr[idx] + dp[idx + 1][1], dp[idx + 1][0]);
+                    profit = max(arr[idx] + ahead[1], ahead[0]);
                 }
 
-                dp[idx][buy] = profit;
+                curr[buy] = profit;
             }
+
+            ahead = curr;
         }
 
-        return dp[0][1];
+        return curr[1];
     }
 };
